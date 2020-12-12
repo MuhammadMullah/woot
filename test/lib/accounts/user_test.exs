@@ -11,7 +11,7 @@ defmodule Woot.Accounts.UserTest do
     test "success: returns a valid changeset with valid attributes" do
       # testing whether is_integer(:points) == true that is already
       # taken care by ecto so we won't bother test.
-      changeset = User.changeset(@valid_attrs)
+      changeset = User.changeset(%User{}, @valid_attrs)
       assert %Changeset{valid?: true, changes: changes} = changeset
     end
   end

@@ -9,3 +9,4 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+1..100 |> Enum.each(fn _ -> Woot.Accounts.create_user(%{points: Enum.random(0..100)}) end)

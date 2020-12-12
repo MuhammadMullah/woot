@@ -14,8 +14,8 @@ defmodule Woot.Accounts.User do
   end
 
   @doc false
-  def changeset(attrs) do
-    %__MODULE__{}
+  def changeset(user, attrs) do
+    user
     |> cast(attrs, [:points])
     |> validate_required(@required_fields)
     |> validate_number(:points, greater_than_or_equal_to: 0, less_than_or_equal_to: 100)

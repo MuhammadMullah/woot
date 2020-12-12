@@ -11,7 +11,6 @@ defmodule Woot.Factory do
     }
   end
 
-
   # Convenience API
 
   def build(factory_name, attributes) do
