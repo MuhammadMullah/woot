@@ -24,6 +24,9 @@ defmodule Woot.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import Woot.DataCase
+
+
+      import Woot.Factory
     end
   end
 
