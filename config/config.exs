@@ -13,7 +13,7 @@ config :woot,
 # Configures the endpoint
 config :woot, WootWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "/jO+ULz5DwxDwtZHLPKFJ3Rt9Jy9yC3/8xeYNDM/2Pm1jXSLmSlL0+xiVQy+sxpI",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: WootWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: Woot.PubSub,
   live_view: [signing_salt: "2H4lIggf"]
