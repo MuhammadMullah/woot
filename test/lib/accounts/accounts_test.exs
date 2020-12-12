@@ -4,6 +4,7 @@ defmodule Woot.Accounts.AccountsTest do
   alias Woot.Accounts
   alias Woot.Accounts.User
 
+  @valid_attrs %{points: 10}
   @updated_attrs %{points: 30}
 
   describe "accounts" do
@@ -13,7 +14,7 @@ defmodule Woot.Accounts.AccountsTest do
     end
 
     test "create_user/1 with valid data creates a user" do
-      user = insert!(:user)
+      assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
       assert is_integer(user.points) == true
     end
 
