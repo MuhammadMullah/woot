@@ -5,6 +5,7 @@ defmodule Woot.Accounts.User do
 
   use Ecto.Schema
   import Ecto.Changeset
+  @derive {Jason.Encoder, only: [:id, :points]}
 
   @required_fields [:points]
 

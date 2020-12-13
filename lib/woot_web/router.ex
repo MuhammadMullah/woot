@@ -7,6 +7,8 @@ defmodule WootWeb.Router do
 
   scope "/api", WootWeb do
     pipe_through :api
+
+    resources "/users", UserController, only: [:index]
   end
 
   # Enables LiveDashboard only for development

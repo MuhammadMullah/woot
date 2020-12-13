@@ -5,6 +5,7 @@ defmodule Woot.Worker do
   """
   use GenServer
   alias Woot.State
+  alias Woot.Accounts
 
   @name __MODULE__
 
@@ -21,11 +22,16 @@ defmodule Woot.Worker do
     GenServer.call(@name, :show)
   end
 
+  def fetch_points do
+    GenServer.call(@name, :fetch)
+  end
+
   # Server Callbacks
 
   @impl true
   def init(_) do
-    scheduler() # schedule to run after every 1 minute
+    # schedule to run after every 1 minute
+    scheduler()
     {:ok, %State{}}
   end
 
@@ -34,9 +40,28 @@ defmodule Woot.Worker do
     {:reply, users, users}
   end
 
+  @impl true
+  def handle_call(:fetch, _from, state) do
+    users = Accounts.fetch_points(state.max_number)
+    timestamp = DateTime.utc_now() |> DateTime.to_unix()
+
+    {:reply, %{users: state.users, timestamp: state.timestamp},
+     %{state | users: users, timestamp: timestamp}}
+  end
+
+  @impl true
+  def handle_info(:work, state) do
+    update_points()
+    scheduler()
+    {:noreply, %{state | max_number: Enum.random(0..100)}}
+  end
 
   defp scheduler do
     Process.send_after(self(), :work, 60_000)
   end
 
+  defp update_points do
+    Accounts.list_users()
+    |> Enum.each(fn user -> Accounts.update_user(user, %{points: Enum.random(0..100)}) end)
+  end
 end

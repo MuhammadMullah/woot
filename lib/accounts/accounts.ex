@@ -49,4 +49,12 @@ defmodule Woot.Accounts do
     |> User.changeset(attrs)
     |> Repo.update()
   end
+
+  @doc """
+    From our users table we fetch all the users with points greater than
+    maximum number
+  """
+  def fetch_points(max_number) do
+    from(u in User, where: u.points > ^max_number, limit: 2) |> Repo.all()
+  end
 end

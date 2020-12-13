@@ -14,7 +14,8 @@ defmodule Woot.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Woot.PubSub},
       # Start the Endpoint (http/https)
-      WootWeb.Endpoint
+      WootWeb.Endpoint,
+      Woot.Worker
       # Start a worker by calling: Woot.Worker.start_link(arg)
       # {Woot.Worker, arg}
     ]
