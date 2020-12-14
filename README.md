@@ -16,7 +16,7 @@ On your browser, visit [`localhost:4000`](http://localhost:4000/api/users)
 
   After starting the server and visiting [`localhost:4000`](http://localhost:4000/api/users), you should see something like this.
 
-  ![Sample] (images/sample.png)
+  ![Sample](images/sample.png)
 
 # Running Tests
 You can run tests with the `mix test` command
