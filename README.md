@@ -22,10 +22,3 @@ On your browser, visit [`localhost:4000`](http://localhost:4000/api/users)
 
 # Running Tests
 You can run tests with the `mix test` command
-
-# Challenge
-  The first time the you visit the webpage an error `no function clause matching in DateTime.from_unix/3` shows up. After refreshing the page the error should not show up.
-
-  The error is caused by the following code `{:ok, d} = DateTime.from_unix(state.timestamp, :second)` and the reason is because when the state starts the timestamp is nil.
-
-  As per writing this, I have not found a hack for this but I am working towards solving that later.
