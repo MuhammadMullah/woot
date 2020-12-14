@@ -36,8 +36,8 @@ defmodule Woot.Worker do
   end
 
   @impl true
-  def handle_call(:show, _from, users) do
-    {:reply, users, users}
+  def handle_call(:show, _from, state) do
+    {:reply, state, state}
   end
 
   @impl true
@@ -45,6 +45,7 @@ defmodule Woot.Worker do
     users = Accounts.fetch_points(state.max_number)
     timestamp = DateTime.utc_now() |> DateTime.to_unix()
 
+    # return state with users who have more points than max_number
     {:reply, %{users: state.users, timestamp: state.timestamp},
      %{state | users: users, timestamp: timestamp}}
   end
@@ -52,6 +53,7 @@ defmodule Woot.Worker do
   @impl true
   def handle_info(:work, state) do
     update_points()
+    # after every one minute, we update genserver state with new random points
     scheduler()
     {:noreply, %{state | max_number: Enum.random(0..100)}}
   end

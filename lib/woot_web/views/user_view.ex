@@ -15,7 +15,6 @@ defmodule WootWeb.UserView do
   end
 
   def render("user.json", %{user: user}) do
-    IO.inspect(user)
     user
   end
 end

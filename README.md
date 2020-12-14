@@ -1,19 +1,21 @@
 # Woot
 
-To start your Phoenix server:
+This is a tiny api with a single endpoints that fetches a max of 2 users with more points than
+max_number which is a genserver state.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+# Running the server.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+  * Make sure all the dependancies are installed by running `mix deps.get`
+  * Run `mix ecto.setup`, this will create the database, run migrations and seed data to the database
+  * Start the Server by `mix phx.server` command.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+On your browser, visit [`localhost:4000`](http://localhost:4000/api/users)
 
-## Learn more
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+# Demo
+
+  After starting the server and visiting [`localhost:4000`](http://localhost:4000/api/users), you should see something like this.
+  (images/sample.png)
+
+# Running Tests
+You can run tests with the `mix test` command
